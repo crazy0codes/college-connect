@@ -17,6 +17,7 @@ router.post('/login', async (req: Request, res: Response) => {
   try {
     await authController.loginUser(req, res);
   } catch (error) {
+    console.error('Error during login:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -26,6 +27,7 @@ router.get('/forgot-password', async (req: Request, res: Response) => {
     await authController.forgotPassword(req, res);
   }
   catch (error) {
+    console.error('Error during forgot password:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -35,6 +37,7 @@ router.get('/verify-email/:token', async (req: Request, res: Response) => {
     await authController.verifyEmail(req, res);
   }
   catch (error) {
+    console.error('Error during email verification:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -44,6 +47,7 @@ router.post('/reset-password/:token', async (req: Request, res: Response) => {
     await authController.resetPassword(req, res);
   }
   catch (error) {
+    console.error('Error during password reset:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
