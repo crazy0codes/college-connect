@@ -43,7 +43,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
   setLoading(true);
   try {
-    const API = "https://college-connect-server.onrender.com/api/auth/login";
+    const API = `${process.env.NEXT_PUBLIC_API_URL}api/auth/login`;
     const response = await fetch(API, {
       method: "POST",
       headers: {
