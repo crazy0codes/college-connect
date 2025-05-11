@@ -41,6 +41,7 @@ export const authController = {
   // },
 
   loginUser: async (req: Request, res: Response) => {
+    console.log("Login request received");
     const { email, password } = req.body;
     const bearerToken = req.headers.authorization;
     const token =
