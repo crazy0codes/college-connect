@@ -35,7 +35,17 @@ export default function VideoCallPage() {
     useEffect(() => {
         const setupConnection = async () => {
             console.log('Attempting to connect to Socket.IO server...');
-            socket.connect();
+            try {
+                socket.connect();
+                console.log('Socket connected');
+            } catch (error) {
+                console.error('Socket connection error:', error);
+                return;
+            }
+
+            socket.on('connect_error', (error) => {
+                console.error('Socket connection error:', error);
+            });
 
             socket.on('connect', async () => {
                 console.log('Socket connected, setting up WebRTC...');
