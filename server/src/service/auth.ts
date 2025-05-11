@@ -14,15 +14,19 @@ export async function getUser(email: string): Promise<DBUser | undefined> {
       SELECT username, stu_email, stu_password, stu_dp
       FROM users
       WHERE stu_email = ${email}`);
+
+      console.log(result.rows);
   return result.rows[0];
 }
 
 export async function isUsernameExists(username: string): Promise<boolean> {
+  console.log("Checking if username exists:", username);
   const result = await sql.query(`
     SELECT username
     FROM users
     WHERE username = ${username}`);
   const rows = result.rows;
+  console.log(result.rows);
   if (rows.length > 0) {
     return true;
   }
