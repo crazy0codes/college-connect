@@ -77,7 +77,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }
   };
-  
   const register = async (email: string, password: string, college: string) => {
     setLoading(true);
     try {
